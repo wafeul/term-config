@@ -36,3 +36,16 @@ do
         No ) break ;;
     esac
 done
+
+echo "Do you wish to change your wall paper with dark-themed wallpapers changing every minutes?"
+select yn in "Yes" "No"
+do
+    case $yn in
+        Yes ) 
+            uid=$(id -u)
+            crontab -l | { cat; echo "* * * * * env DISPLAY=:0 DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/${uid}/bus ~/term-config/change-wallpaper.sh"; } | crontab -
+            break ;;
+        No ) break ;;
+    esac
+done
+
