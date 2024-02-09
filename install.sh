@@ -32,6 +32,7 @@ do
         Yes ) 
             mv ~/.bashrc ~/.bashrc.old
             cp ./.bashrc ~/.bashrc
+            git clone --branch stable https://github.com/nojhan/liquidprompt.git ./liquidprompt
             break ;;
         No ) break ;;
     esac
