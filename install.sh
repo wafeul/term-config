@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo "This install is for Ubuntu related OS only."
-echo "If you have sudo rights please continue, otherwise ask your IT to install curl first."
+echo "If you have sudo rights please continue, otherwise ask your IT to install curl and xcfe first."
 select yn in "Continue" "Exit"
 do
     case $yn in
