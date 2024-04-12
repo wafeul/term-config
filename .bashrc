@@ -114,3 +114,7 @@ PROMPT_COMMAND='printf "\033]0;host: %s\007" "${HOSTNAME%%.*}"'
 
 # Add NeoVim to the path
 export PATH="$PATH:/home/rbourgeas/Labo/Softwares/nvim-linux64/bin/:~/.local/bin"
+
+# Add tmuxifier to Path and init it
+export PATH="$HOME/.tmuxifier/bin:$PATH"
+eval "$(tmuxifier init -)"
