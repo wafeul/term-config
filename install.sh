@@ -38,6 +38,20 @@ do
     esac
 done
 
+echo "Do you wish to use tmux?"
+select yn in "Yes" "No"
+do
+    case $yn in
+        Yes)
+            git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+            cp ./tmux.conf ~/.tmux.conf
+            break
+            ;;
+        No)
+            break
+            ;;
+    esac
+done
 echo "Do you wish to change your wall paper with dark-themed wallpapers changing every minutes?"
 select yn in "Yes" "No"
 do
