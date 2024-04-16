@@ -46,6 +46,11 @@ do
             git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
             cp ./tmux.conf ~/.tmux.conf
             git clone https://github.com/jimeh/tmuxifier.git ~/.tmuxifier
+            if ! grep -q "tmuxifier" "$HOME/.bashrc"; then
+                echo 'export PATH="$HOME/.tmuxifier/bin:$PATH"' >> "$HOME/.bashrc"
+                echo 'eval "$(tmuxifier init -)"' >> "$HOME/.bashrc"
+            fi
+
             break
             ;;
         No)
