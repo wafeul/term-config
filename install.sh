@@ -50,6 +50,7 @@ do
                 echo 'export PATH="$HOME/.tmuxifier/bin:$PATH"' >> "$HOME/.bashrc"
                 echo 'eval "$(tmuxifier init -)"' >> "$HOME/.bashrc"
             fi
+            cp ./tmuxifier/*.sh ~/.tmuxifier/layouts/
 
             break
             ;;
