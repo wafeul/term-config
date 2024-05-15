@@ -108,7 +108,7 @@ alias crimslab=/crimslab
 PROMPT_COMMAND='printf "\033]0;host: %s\007" "${HOSTNAME%%.*}"'
 # Only load liquidprompt in interactive shells, not from a script or from scp
 #echo $- | grep -q i 2>/dev/null && . /usr/share/liquidprompt/liquidprompt
-[[ $- = *i* ]] && source ~/term-config/liquidprompt/liquidprompt
+# [[ $- = *i* ]] && source ~/term-config/liquidprompt/liquidprompt
 
 
 
