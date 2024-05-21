@@ -70,3 +70,28 @@ do
         No ) break ;;
     esac
 done
+echo "Do you wish to install lsd?"
+select yn in "Yes" "No"
+do
+    case $yn in
+        Yes ) 
+            sudo apt install lsd
+            break ;;
+        No ) break ;;
+    esac
+done
+echo "Do you wish to have some lsd aliases?
+* ls='lsd -h'
+* ll='lsd -lhrth'
+* la='lsd -lhrtAh'"
+select yn in "Yes" "No"
+do
+    case $yn in
+        Yes ) 
+            echo "alias ls='lsd'" >> ~/.bash_aliases
+            echo "alias ll='lsd -lhrth'" >> ~/.bash_aliases
+            echo "alias la='lsd -lhrtAh'" >> ~/.bash_aliases
+            break ;;
+        No ) break ;;
+    esac
+done
