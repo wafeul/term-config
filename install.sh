@@ -1,5 +1,7 @@
 #!/bin/bash
 
+LSD_CONFIG_FOLDER="$HOME/.config/lsd"
+
 echo "This install is for Ubuntu related OS only."
 echo "If you have sudo rights please continue, otherwise ask your IT to install curl and xcfe first."
 select yn in "Continue" "Exit"
@@ -76,14 +78,16 @@ do
     case $yn in
         Yes ) 
             sudo apt install lsd
+            [ -d "$LSD_CONFIG_FOLDER" ] || mkdir -p "$LSD_CONFIG_FOLDER"
+            cp ./lsd/config.yaml "$LSD_CONFIG_FOLDER"
             break ;;
         No ) break ;;
     esac
 done
 echo "Do you wish to have some lsd aliases?
 * ls='lsd -h'
-* ll='lsd -lhrth'
-* la='lsd -lhrtAh'"
+* ll='lsd -lrth'
+* la='lsd -lrtAh'"
 select yn in "Yes" "No"
 do
     case $yn in
