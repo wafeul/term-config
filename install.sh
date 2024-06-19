@@ -61,6 +61,21 @@ do
             ;;
     esac
 done
+
+echo "Do you wish to install xclip in order to copy from tmux to the system clipboard?"
+select yn in "Yes" "No"
+do
+    case "$yn" in
+        Yes)
+            sudo apt install xclip
+            break
+            ;;
+        No)
+            break
+            ;;
+    esac
+done
+
 echo "Do you wish to change your wall paper with dark-themed wallpapers changing every minutes?"
 select yn in "Yes" "No"
 do
@@ -72,7 +87,7 @@ do
         No ) break ;;
     esac
 done
-echo "Do you wish to install lsd?"
+echo "Do you wish to install lsd? This is an empowered version of ls that can be personalized, see $LSD_CONFIG_FOLDER/config.yaml."
 select yn in "Yes" "No"
 do
     case $yn in
