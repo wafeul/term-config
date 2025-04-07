@@ -8,21 +8,25 @@
 # set date for opening laravel log file
 printf -v date '%(%Y-%m-%d)T' -1 
 
-if initialize_session "lift"; then
+if initialize_session "deposition"; then
     window_root "~/Projects/CRIMS/PHP_update/docker-build"
     new_window "Docker-build"
     window_root "~/Projects/CRIMS/PHP_update/docker-build/docker-compose"
-    new_window "lift-compose"
-    run_cmd "vi lift-compose.yml"
-    window_root "~/Projects/CRIMS/PHP_update/docker-build/logs/lift"
-    new_window "Log-lift"
+    new_window "deposition-compose"
+    run_cmd "vi deposition-compose.yml"
+    window_root "~/Projects/CRIMS/PHP_update/docker-build/logs/deposition"
+    new_window "Log-deposition"
     window_root "~/Projects/CRIMS/PHP_update/docker-build/logs"
+    run_cmd "tail -f laravel-${date}.log"
     new_window "Log-"
-    window_root "~/Projects/CRIMS/PHP_update/api_volumes/frontend/laravel/"
-    new_window "NVIM LIFT"
+    window_root "~/Projects/CRIMS/PHP_update/api_volumes/deposition/laravel"
+    new_window "NVIM DEPOSITION"
     run_cmd "vi"
-    window_root "~/Projects/CRIMS/PHP_update/api_volumes/frontend/laravel/"
-    new_window "BASH LIFT"
+    window_root "~/Projects/CRIMS/PHP_update/api_volumes/deposition/laravel"
+    new_window "BASH DEPOSITION"
+    window_root "~/Projects/CRIMS/PHP_update/api_volumes/deposition/laravel"
+    new_window "DB DEPOSITION"
+    run_cmd "docker exec -it deposition-postgres psql -Ucrims deposition"
     select_window 5
 
     # Create a new window inline within session layout definition.

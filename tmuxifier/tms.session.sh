@@ -8,21 +8,25 @@
 # set date for opening laravel log file
 printf -v date '%(%Y-%m-%d)T' -1 
 
-if initialize_session "lift"; then
+if initialize_session "tms"; then
     window_root "~/Projects/CRIMS/PHP_update/docker-build"
     new_window "Docker-build"
     window_root "~/Projects/CRIMS/PHP_update/docker-build/docker-compose"
-    new_window "lift-compose"
-    run_cmd "vi lift-compose.yml"
-    window_root "~/Projects/CRIMS/PHP_update/docker-build/logs/lift"
-    new_window "Log-lift"
+    new_window "thermofluor-compose"
+    run_cmd "vi thermofluor-compose.yml"
+    window_root "~/Projects/CRIMS/PHP_update/docker-build/logs/thermofluor"
+    new_window "Log-thermofluor"
+    run_cmd "tail -f laravel-${date}.log"
     window_root "~/Projects/CRIMS/PHP_update/docker-build/logs"
     new_window "Log-"
-    window_root "~/Projects/CRIMS/PHP_update/api_volumes/frontend/laravel/"
-    new_window "NVIM LIFT"
+    window_root "/home/crims/Projects/CRIMS/PHP_update/api_volumes/thermofluor/"
+    new_window "NVIM THERMOFLUOR"
     run_cmd "vi"
-    window_root "~/Projects/CRIMS/PHP_update/api_volumes/frontend/laravel/"
-    new_window "BASH LIFT"
+    window_root "/home/crims/Projects/CRIMS/PHP_update/api_volumes/thermofluor/"
+    new_window "BASH THERMOFLUOR"
+    window_root "/home/crims/Projects/CRIMS/PHP_update/api_volumes/thermofluor/"
+    new_window "DB THERMOFLUOR"
+    run_cmd "docker exec -it thermofluor-postgres psql -Ucrims-tm m-api"
     select_window 5
 
     # Create a new window inline within session layout definition.

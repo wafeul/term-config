@@ -8,21 +8,25 @@
 # set date for opening laravel log file
 printf -v date '%(%Y-%m-%d)T' -1 
 
-if initialize_session "lift"; then
+if initialize_session "dataproc"; then
     window_root "~/Projects/CRIMS/PHP_update/docker-build"
-    new_window "Docker-build"
+    new_window "DOCKER BUILD"
     window_root "~/Projects/CRIMS/PHP_update/docker-build/docker-compose"
-    new_window "lift-compose"
-    run_cmd "vi lift-compose.yml"
-    window_root "~/Projects/CRIMS/PHP_update/docker-build/logs/lift"
-    new_window "Log-lift"
+    new_window "DATAPROC COMPOSE"
+    run_cmd "vi dataproc-compose.yml"
+    window_root "~/Projects/CRIMS/PHP_update/docker-build/logs/dataproc"
+    new_window "LOG DATAPROC"
+    run_cmd "tail -f laravel-${date}.log"
     window_root "~/Projects/CRIMS/PHP_update/docker-build/logs"
-    new_window "Log-"
-    window_root "~/Projects/CRIMS/PHP_update/api_volumes/frontend/laravel/"
-    new_window "NVIM LIFT"
+    new_window "LOG-"
+    window_root "~/Projects/CRIMS/PHP_update/api_volumes/dataproc-new/dataproc"
+    new_window "NVIM DATAPROC"
     run_cmd "vi"
-    window_root "~/Projects/CRIMS/PHP_update/api_volumes/frontend/laravel/"
-    new_window "BASH LIFT"
+    window_root "~/Projects/CRIMS/PHP_update/api_volumes/dataproc-new/dataproc"
+    new_window "BASH DATAPROC"
+    window_root "~/Projects/CRIMS/PHP_update/api_volumes/dataproc-new/dataproc"
+    new_window "DB DATAPROC"
+    run_cmd "docker exec -it dataproc-postgres psql -Ubuster dataprocdb"
     select_window 5
 
     # Create a new window inline within session layout definition.
